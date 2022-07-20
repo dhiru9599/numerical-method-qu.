@@ -207,3 +207,63 @@ int main()
 }
 [20/07, 1:46 pm] Nitish Kumar Cm(Hit): RK method
 [20/07, 1:46 pm] Nitish Kumar Cm(Hit): lagranges interpolation
+[20/07, 1:47 pm] Nitish Kumar Cm(Hit): #include<stdio.h>
+#include<conio.h>
+
+int main(){
+  float x,xn,h;
+  float Y[10][10];
+  int i,j,n;
+  float P,S,V;
+  printf("Enter the value of x,xn,n,h: ");
+  scanf("%f%f%d%f",&x,&xn,&n,&h);
+  printf("Enter the value of Y :");
+  for(i=0;i<=n;i++){
+    scanf("%f",&Y[0][i]);
+  }
+  V=(x-xn)/h;
+  for(i=1;i<=n;i++){
+    for(j=1;j<=n;j++){
+        Y[i][j]=Y[i-1][j]-Y[i-1][j-1];
+    }
+  }
+  S=0.0;
+  P=1.0;
+  for(i=1;i<=n;i++){
+    P=P*((V+i-1)/i);
+    S=S+(P*(Y[i][n]));
+  }
+  S=S+Y[0][n];
+  printf("result = %f",S);
+return 0;
+}
+[20/07, 1:47 pm] Nitish Kumar Cm(Hit): NBI
+[20/07, 1:47 pm] Nitish Kumar Cm(Hit): #include<stdio.h>
+#include<conio.h>
+int main(){
+  float x,x0,n,h;
+  float Y[10][10];
+  int i,j;
+  float P,S,U;
+  printf("Enter the value of x,x0,n,h: ");
+  scanf("%f%f%f%f",&x,&x0,&n,&h);
+  printf("Enter the value of Y :");
+  for(i=0;i<=n;i++){
+    scanf("%f",&Y[0][i]);
+  }
+  U=(x-x0)/h;
+  for(i=1;i<=n;i++){
+    for(j=0;j<=n-i;j++){
+    Y[i][j]=Y[i-1][j+1]-Y[i-1][j];}
+  }
+  S=0.0;
+  P=1.0;
+  for(i=1;i<=n;i++){
+    P=P*((U-i+1)/i);
+    S=S+(P*Y[i][0]);
+  }
+  S=S+Y[0][0];
+  printf("result=%f",S);
+  return 0;
+}
+[20/07, 1:47 pm] Nitish Kumar Cm(Hit): NFI
